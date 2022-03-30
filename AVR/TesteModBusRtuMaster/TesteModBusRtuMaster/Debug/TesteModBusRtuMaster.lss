@@ -1,0 +1,1429 @@
+
+TesteModBusRtuMaster.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000087c  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000002  00800060  0000087c  00000910  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          000002d8  00800062  00800062  00000912  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000912  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000944  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000b8  00000000  00000000  00000980  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000e0b  00000000  00000000  00000a38  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000716  00000000  00000000  00001843  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000cd3  00000000  00000000  00001f59  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000002d0  00000000  00000000  00002c2c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000005ed  00000000  00000000  00002efc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000d14  00000000  00000000  000034e9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000a8  00000000  00000000  000041fd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 f1 02 	jmp	0x5e2	; 0x5e2 <__vector_4>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 67 02 	jmp	0x4ce	; 0x4ce <__vector_13>
+  38:	0c 94 b5 02 	jmp	0x56a	; 0x56a <__vector_14>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ec e7       	ldi	r30, 0x7C	; 124
+  68:	f8 e0       	ldi	r31, 0x08	; 8
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a2 36       	cpi	r26, 0x62	; 98
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	23 e0       	ldi	r18, 0x03	; 3
+  78:	a2 e6       	ldi	r26, 0x62	; 98
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	aa 33       	cpi	r26, 0x3A	; 58
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 3f 03 	call	0x67e	; 0x67e <main>
+  8a:	0c 94 3c 04 	jmp	0x878	; 0x878 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <iniciaTransmissao>:
+		ModBus.funcao=15; // para ajustar a recepção
+		ModBus.rxsize=8; // determina o número de bytes na resposta para preparar a recepção
+		ModBus.txpt=1; // atualiza o ponteiro de transmissção
+		iniciaTransmissao(ModBus.txbuf[0]);
+	}
+}
+  92:	8c b9       	out	0x0c, r24	; 12
+  94:	8a b1       	in	r24, 0x0a	; 10
+  96:	80 62       	ori	r24, 0x20	; 32
+  98:	8a b9       	out	0x0a, r24	; 10
+  9a:	08 95       	ret
+
+0000009c <CRC16Table256>:
+  9c:	ac 01       	movw	r20, r24
+  9e:	20 e0       	ldi	r18, 0x00	; 0
+  a0:	30 e0       	ldi	r19, 0x00	; 0
+  a2:	80 e0       	ldi	r24, 0x00	; 0
+  a4:	90 e0       	ldi	r25, 0x00	; 0
+  a6:	12 c0       	rjmp	.+36     	; 0xcc <CRC16Table256+0x30>
+  a8:	bc 01       	movw	r22, r24
+  aa:	64 27       	eor	r22, r20
+  ac:	75 27       	eor	r23, r21
+  ae:	60 ff       	sbrs	r22, 0
+  b0:	07 c0       	rjmp	.+14     	; 0xc0 <CRC16Table256+0x24>
+  b2:	96 95       	lsr	r25
+  b4:	87 95       	ror	r24
+  b6:	61 e0       	ldi	r22, 0x01	; 1
+  b8:	86 27       	eor	r24, r22
+  ba:	60 ea       	ldi	r22, 0xA0	; 160
+  bc:	96 27       	eor	r25, r22
+  be:	02 c0       	rjmp	.+4      	; 0xc4 <CRC16Table256+0x28>
+  c0:	96 95       	lsr	r25
+  c2:	87 95       	ror	r24
+  c4:	56 95       	lsr	r21
+  c6:	47 95       	ror	r20
+  c8:	2f 5f       	subi	r18, 0xFF	; 255
+  ca:	3f 4f       	sbci	r19, 0xFF	; 255
+  cc:	28 30       	cpi	r18, 0x08	; 8
+  ce:	31 05       	cpc	r19, r1
+  d0:	58 f3       	brcs	.-42     	; 0xa8 <CRC16Table256+0xc>
+  d2:	08 95       	ret
+
+000000d4 <update_crc_16>:
+  d4:	cf 93       	push	r28
+  d6:	df 93       	push	r29
+  d8:	9c 01       	movw	r18, r24
+  da:	26 27       	eor	r18, r22
+  dc:	c9 2f       	mov	r28, r25
+  de:	dd 27       	eor	r29, r29
+  e0:	c9 01       	movw	r24, r18
+  e2:	99 27       	eor	r25, r25
+  e4:	0e 94 4e 00 	call	0x9c	; 0x9c <CRC16Table256>
+  e8:	8c 27       	eor	r24, r28
+  ea:	9d 27       	eor	r25, r29
+  ec:	df 91       	pop	r29
+  ee:	cf 91       	pop	r28
+  f0:	08 95       	ret
+
+000000f2 <CRC16>:
+  f2:	ef 92       	push	r14
+  f4:	ff 92       	push	r15
+  f6:	0f 93       	push	r16
+  f8:	1f 93       	push	r17
+  fa:	cf 93       	push	r28
+  fc:	df 93       	push	r29
+  fe:	7c 01       	movw	r14, r24
+ 100:	8b 01       	movw	r16, r22
+ 102:	c0 e0       	ldi	r28, 0x00	; 0
+ 104:	d0 e0       	ldi	r29, 0x00	; 0
+ 106:	8f ef       	ldi	r24, 0xFF	; 255
+ 108:	9f ef       	ldi	r25, 0xFF	; 255
+ 10a:	07 c0       	rjmp	.+14     	; 0x11a <CRC16+0x28>
+ 10c:	f7 01       	movw	r30, r14
+ 10e:	ec 0f       	add	r30, r28
+ 110:	fd 1f       	adc	r31, r29
+ 112:	60 81       	ld	r22, Z
+ 114:	0e 94 6a 00 	call	0xd4	; 0xd4 <update_crc_16>
+ 118:	21 96       	adiw	r28, 0x01	; 1
+ 11a:	c0 17       	cp	r28, r16
+ 11c:	d1 07       	cpc	r29, r17
+ 11e:	b0 f3       	brcs	.-20     	; 0x10c <CRC16+0x1a>
+ 120:	df 91       	pop	r29
+ 122:	cf 91       	pop	r28
+ 124:	1f 91       	pop	r17
+ 126:	0f 91       	pop	r16
+ 128:	ff 90       	pop	r15
+ 12a:	ef 90       	pop	r14
+ 12c:	08 95       	ret
+
+0000012e <ModBusReset>:
+ 12e:	ea e2       	ldi	r30, 0x2A	; 42
+ 130:	f1 e0       	ldi	r31, 0x01	; 1
+ 132:	81 e0       	ldi	r24, 0x01	; 1
+ 134:	82 83       	std	Z+2, r24	; 0x02
+ 136:	10 82       	st	Z, r1
+ 138:	11 82       	std	Z+1, r1	; 0x01
+ 13a:	08 95       	ret
+
+0000013c <modBusPresetMultipleRegistersFC16>:
+
+void modBusPresetMultipleRegistersFC16(uint16_t endInicial, uint16_t numRegistradores, uint16_t *dataAddr)
+{
+ 13c:	cf 93       	push	r28
+ 13e:	df 93       	push	r29
+	uint16_t crc;
+	uint16_t temp; // variável para valores temporários
+	uint16_t cont;
+	if(ModBus.status==inativo) // está pronto para transmitir
+ 140:	20 91 2a 01 	lds	r18, 0x012A	; 0x80012a <ModBus>
+ 144:	21 11       	cpse	r18, r1
+ 146:	51 c0       	rjmp	.+162    	; 0x1ea <modBusPresetMultipleRegistersFC16+0xae>
+	{
+		ModBus.txbuf[0]=ModBus.end_modbus; // inicia o pacote com o endereço do slave
+ 148:	20 91 2c 01 	lds	r18, 0x012C	; 0x80012c <ModBus+0x2>
+ 14c:	20 93 30 02 	sts	0x0230, r18	; 0x800230 <ModBus+0x106>
+		ModBus.txbuf[1]=16; // indica a função 16
+ 150:	20 e1       	ldi	r18, 0x10	; 16
+ 152:	20 93 31 02 	sts	0x0231, r18	; 0x800231 <ModBus+0x107>
+		ModBus.txbuf[2]=(uint8_t)(endInicial>>8);
+ 156:	90 93 32 02 	sts	0x0232, r25	; 0x800232 <ModBus+0x108>
+		ModBus.txbuf[3]=(uint8_t)(endInicial);
+ 15a:	80 93 33 02 	sts	0x0233, r24	; 0x800233 <ModBus+0x109>
+		ModBus.txbuf[4]=(uint8_t)(numRegistradores>>8);
+ 15e:	70 93 34 02 	sts	0x0234, r23	; 0x800234 <ModBus+0x10a>
+		ModBus.txbuf[5]=(uint8_t)(numRegistradores);
+ 162:	60 93 35 02 	sts	0x0235, r22	; 0x800235 <ModBus+0x10b>
+		ModBus.txbuf[6]=(uint8_t)(numRegistradores*2);
+ 166:	86 2f       	mov	r24, r22
+ 168:	88 0f       	add	r24, r24
+ 16a:	80 93 36 02 	sts	0x0236, r24	; 0x800236 <ModBus+0x10c>
+		temp=7;
+		for(cont=0; cont<numRegistradores; cont++)
+ 16e:	80 e0       	ldi	r24, 0x00	; 0
+ 170:	90 e0       	ldi	r25, 0x00	; 0
+		ModBus.txbuf[2]=(uint8_t)(endInicial>>8);
+		ModBus.txbuf[3]=(uint8_t)(endInicial);
+		ModBus.txbuf[4]=(uint8_t)(numRegistradores>>8);
+		ModBus.txbuf[5]=(uint8_t)(numRegistradores);
+		ModBus.txbuf[6]=(uint8_t)(numRegistradores*2);
+		temp=7;
+ 172:	c7 e0       	ldi	r28, 0x07	; 7
+ 174:	d0 e0       	ldi	r29, 0x00	; 0
+		for(cont=0; cont<numRegistradores; cont++)
+ 176:	11 c0       	rjmp	.+34     	; 0x19a <modBusPresetMultipleRegistersFC16+0x5e>
+		{
+			ModBus.txbuf[temp]=(uint8_t)(dataAddr[cont]>>8);
+ 178:	fc 01       	movw	r30, r24
+ 17a:	ee 0f       	add	r30, r30
+ 17c:	ff 1f       	adc	r31, r31
+ 17e:	e4 0f       	add	r30, r20
+ 180:	f5 1f       	adc	r31, r21
+ 182:	21 81       	ldd	r18, Z+1	; 0x01
+ 184:	de 01       	movw	r26, r28
+ 186:	a0 5d       	subi	r26, 0xD0	; 208
+ 188:	bd 4f       	sbci	r27, 0xFD	; 253
+ 18a:	2c 93       	st	X, r18
+			temp++;
+			ModBus.txbuf[temp]=(uint8_t)(dataAddr[cont]);
+ 18c:	20 81       	ld	r18, Z
+ 18e:	fe 01       	movw	r30, r28
+ 190:	ef 5c       	subi	r30, 0xCF	; 207
+ 192:	fd 4f       	sbci	r31, 0xFD	; 253
+ 194:	20 83       	st	Z, r18
+			temp++;
+ 196:	22 96       	adiw	r28, 0x02	; 2
+		ModBus.txbuf[3]=(uint8_t)(endInicial);
+		ModBus.txbuf[4]=(uint8_t)(numRegistradores>>8);
+		ModBus.txbuf[5]=(uint8_t)(numRegistradores);
+		ModBus.txbuf[6]=(uint8_t)(numRegistradores*2);
+		temp=7;
+		for(cont=0; cont<numRegistradores; cont++)
+ 198:	01 96       	adiw	r24, 0x01	; 1
+ 19a:	86 17       	cp	r24, r22
+ 19c:	97 07       	cpc	r25, r23
+ 19e:	60 f3       	brcs	.-40     	; 0x178 <modBusPresetMultipleRegistersFC16+0x3c>
+			ModBus.txbuf[temp]=(uint8_t)(dataAddr[cont]>>8);
+			temp++;
+			ModBus.txbuf[temp]=(uint8_t)(dataAddr[cont]);
+			temp++;
+		}
+		crc=CRC16(ModBus.txbuf,(uint16_t)temp); // calcula o crc
+ 1a0:	be 01       	movw	r22, r28
+ 1a2:	80 e3       	ldi	r24, 0x30	; 48
+ 1a4:	92 e0       	ldi	r25, 0x02	; 2
+ 1a6:	0e 94 79 00 	call	0xf2	; 0xf2 <CRC16>
+		ModBus.txbuf[temp]=(uint8_t)(crc);
+ 1aa:	ea e2       	ldi	r30, 0x2A	; 42
+ 1ac:	f1 e0       	ldi	r31, 0x01	; 1
+ 1ae:	de 01       	movw	r26, r28
+ 1b0:	a0 5d       	subi	r26, 0xD0	; 208
+ 1b2:	bd 4f       	sbci	r27, 0xFD	; 253
+ 1b4:	8c 93       	st	X, r24
+		temp++;
+		ModBus.txbuf[temp]=(uint8_t)(crc>>8);
+ 1b6:	de 01       	movw	r26, r28
+ 1b8:	af 5c       	subi	r26, 0xCF	; 207
+ 1ba:	bd 4f       	sbci	r27, 0xFD	; 253
+ 1bc:	9c 93       	st	X, r25
+		ModBus.txsize=temp+1;
+ 1be:	22 96       	adiw	r28, 0x02	; 2
+ 1c0:	d6 83       	std	Z+6, r29	; 0x06
+ 1c2:	c5 83       	std	Z+5, r28	; 0x05
+		ModBus.status=transmitindo;
+ 1c4:	81 e0       	ldi	r24, 0x01	; 1
+ 1c6:	80 83       	st	Z, r24
+		ModBus.funcao=16; // para ajustar a recepção
+ 1c8:	80 e1       	ldi	r24, 0x10	; 16
+ 1ca:	80 93 2f 03 	sts	0x032F, r24	; 0x80032f <ModBus+0x205>
+		ModBus.rxsize=8; // determina o número de bytes na resposta para preparar a recepção
+ 1ce:	88 e0       	ldi	r24, 0x08	; 8
+ 1d0:	90 e0       	ldi	r25, 0x00	; 0
+ 1d2:	94 83       	std	Z+4, r25	; 0x04
+ 1d4:	83 83       	std	Z+3, r24	; 0x03
+		ModBus.txpt=1; // atualiza o ponteiro de transmissção
+ 1d6:	81 e0       	ldi	r24, 0x01	; 1
+ 1d8:	90 e0       	ldi	r25, 0x00	; 0
+ 1da:	90 93 39 03 	sts	0x0339, r25	; 0x800339 <ModBus+0x20f>
+ 1de:	80 93 38 03 	sts	0x0338, r24	; 0x800338 <ModBus+0x20e>
+		iniciaTransmissao(ModBus.txbuf[0]);
+ 1e2:	80 91 30 02 	lds	r24, 0x0230	; 0x800230 <ModBus+0x106>
+ 1e6:	0e 94 49 00 	call	0x92	; 0x92 <iniciaTransmissao>
+	}
+}
+ 1ea:	df 91       	pop	r29
+ 1ec:	cf 91       	pop	r28
+ 1ee:	08 95       	ret
+
+000001f0 <ModBusProcess>:
+
+void ModBusProcess()
+{
+ 1f0:	0f 93       	push	r16
+ 1f2:	1f 93       	push	r17
+ 1f4:	cf 93       	push	r28
+ 1f6:	df 93       	push	r29
+	uint16_t crc; // armazena o valor do crc do pacote
+	uint16_t temp; // variável para valores temporários
+	uint16_t cont_bit; // conta o bit nas recepções de bits
+	uint16_t cont; // variável para contar os registradores recebidos
+
+	ModBus.erro=respostaInvalida;
+ 1f8:	ea e2       	ldi	r30, 0x2A	; 42
+ 1fa:	f1 e0       	ldi	r31, 0x01	; 1
+ 1fc:	82 e0       	ldi	r24, 0x02	; 2
+ 1fe:	81 83       	std	Z+1, r24	; 0x01
+	crc=CRC16(ModBus.rxbuf,ModBus.rxsize-1); // calcula o crc do pacote
+ 200:	03 81       	ldd	r16, Z+3	; 0x03
+ 202:	14 81       	ldd	r17, Z+4	; 0x04
+ 204:	e8 01       	movw	r28, r16
+ 206:	21 97       	sbiw	r28, 0x01	; 1
+ 208:	be 01       	movw	r22, r28
+ 20a:	81 e3       	ldi	r24, 0x31	; 49
+ 20c:	91 e0       	ldi	r25, 0x01	; 1
+ 20e:	0e 94 79 00 	call	0xf2	; 0xf2 <CRC16>
+	if((uint8_t)(crc&0x00ff)==ModBus.rxbuf[ModBus.rxsize-1]&&(uint8_t)(crc>>8)==ModBus.rxbuf[ModBus.rxsize]) // testa se o crc é válido
+ 212:	ac 01       	movw	r20, r24
+ 214:	55 27       	eor	r21, r21
+ 216:	c6 5d       	subi	r28, 0xD6	; 214
+ 218:	de 4f       	sbci	r29, 0xFE	; 254
+ 21a:	2f 81       	ldd	r18, Y+7	; 0x07
+ 21c:	30 e0       	ldi	r19, 0x00	; 0
+ 21e:	42 17       	cp	r20, r18
+ 220:	53 07       	cpc	r21, r19
+ 222:	09 f0       	breq	.+2      	; 0x226 <ModBusProcess+0x36>
+ 224:	3f c1       	rjmp	.+638    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+ 226:	29 2f       	mov	r18, r25
+ 228:	30 e0       	ldi	r19, 0x00	; 0
+ 22a:	f8 01       	movw	r30, r16
+ 22c:	e6 5d       	subi	r30, 0xD6	; 214
+ 22e:	fe 4f       	sbci	r31, 0xFE	; 254
+ 230:	87 81       	ldd	r24, Z+7	; 0x07
+ 232:	90 e0       	ldi	r25, 0x00	; 0
+ 234:	28 17       	cp	r18, r24
+ 236:	39 07       	cpc	r19, r25
+ 238:	09 f0       	breq	.+2      	; 0x23c <ModBusProcess+0x4c>
+ 23a:	34 c1       	rjmp	.+616    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+	{
+		if(ModBus.funcao==1) // se for a função 1
+ 23c:	80 91 2f 03 	lds	r24, 0x032F	; 0x80032f <ModBus+0x205>
+ 240:	81 30       	cpi	r24, 0x01	; 1
+ 242:	09 f0       	breq	.+2      	; 0x246 <ModBusProcess+0x56>
+ 244:	4a c0       	rjmp	.+148    	; 0x2da <ModBusProcess+0xea>
+		{
+			if(ModBus.rxbuf[0]!=ModBus.end_modbus)// erro: endereço inválido
+ 246:	ea e2       	ldi	r30, 0x2A	; 42
+ 248:	f1 e0       	ldi	r31, 0x01	; 1
+ 24a:	97 81       	ldd	r25, Z+7	; 0x07
+ 24c:	82 81       	ldd	r24, Z+2	; 0x02
+ 24e:	98 13       	cpse	r25, r24
+ 250:	29 c1       	rjmp	.+594    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[1]!=1)// erro: função inválida
+ 252:	80 91 32 01 	lds	r24, 0x0132	; 0x800132 <ModBus+0x8>
+ 256:	81 30       	cpi	r24, 0x01	; 1
+ 258:	09 f0       	breq	.+2      	; 0x25c <ModBusProcess+0x6c>
+ 25a:	24 c1       	rjmp	.+584    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[2]!=(ModBus.rxsize-5))// erro: contador de bytes incorreto
+ 25c:	80 91 33 01 	lds	r24, 0x0133	; 0x800133 <ModBus+0x9>
+ 260:	90 e0       	ldi	r25, 0x00	; 0
+ 262:	05 50       	subi	r16, 0x05	; 5
+ 264:	11 09       	sbc	r17, r1
+ 266:	80 17       	cp	r24, r16
+ 268:	91 07       	cpc	r25, r17
+ 26a:	09 f0       	breq	.+2      	; 0x26e <ModBusProcess+0x7e>
+ 26c:	1b c1       	rjmp	.+566    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+ 26e:	40 e0       	ldi	r20, 0x00	; 0
+ 270:	50 e0       	ldi	r21, 0x00	; 0
+ 272:	21 e0       	ldi	r18, 0x01	; 1
+ 274:	30 e0       	ldi	r19, 0x00	; 0
+ 276:	63 e0       	ldi	r22, 0x03	; 3
+ 278:	70 e0       	ldi	r23, 0x00	; 0
+ 27a:	25 c0       	rjmp	.+74     	; 0x2c6 <ModBusProcess+0xd6>
+			// tudo certo, armazenando dados lidos
+			temp=3;// primeiro byte de dados do pacote
+			cont_bit=1; //determina a posição do bit no byte
+			for(cont=0; cont<ModBus.numRegs; cont++) // conta os bits recebidos
+			{
+				if((ModBus.rxbuf[temp]&cont_bit)!=0) // bit recebido é 1
+ 27c:	fb 01       	movw	r30, r22
+ 27e:	e6 5d       	subi	r30, 0xD6	; 214
+ 280:	fe 4f       	sbci	r31, 0xFE	; 254
+ 282:	87 81       	ldd	r24, Z+7	; 0x07
+ 284:	90 e0       	ldi	r25, 0x00	; 0
+ 286:	82 23       	and	r24, r18
+ 288:	93 23       	and	r25, r19
+ 28a:	89 2b       	or	r24, r25
+ 28c:	49 f0       	breq	.+18     	; 0x2a0 <ModBusProcess+0xb0>
+				{
+					ModBus.data_bit_addr[cont]=1;
+ 28e:	e0 91 32 03 	lds	r30, 0x0332	; 0x800332 <ModBus+0x208>
+ 292:	f0 91 33 03 	lds	r31, 0x0333	; 0x800333 <ModBus+0x209>
+ 296:	e4 0f       	add	r30, r20
+ 298:	f5 1f       	adc	r31, r21
+ 29a:	81 e0       	ldi	r24, 0x01	; 1
+ 29c:	80 83       	st	Z, r24
+ 29e:	07 c0       	rjmp	.+14     	; 0x2ae <ModBusProcess+0xbe>
+				}
+				else // bit recebido é 1
+				{
+					ModBus.data_bit_addr[cont]=0;
+ 2a0:	e0 91 32 03 	lds	r30, 0x0332	; 0x800332 <ModBus+0x208>
+ 2a4:	f0 91 33 03 	lds	r31, 0x0333	; 0x800333 <ModBus+0x209>
+ 2a8:	e4 0f       	add	r30, r20
+ 2aa:	f5 1f       	adc	r31, r21
+ 2ac:	10 82       	st	Z, r1
+				}
+				cont_bit=cont_bit<<1;
+ 2ae:	22 0f       	add	r18, r18
+ 2b0:	33 1f       	adc	r19, r19
+				if(cont_bit==256) //fim do byte
+ 2b2:	21 15       	cp	r18, r1
+ 2b4:	81 e0       	ldi	r24, 0x01	; 1
+ 2b6:	38 07       	cpc	r19, r24
+ 2b8:	21 f4       	brne	.+8      	; 0x2c2 <ModBusProcess+0xd2>
+				{
+					temp++; // aponta o proximo byte de dados do pacote
+ 2ba:	6f 5f       	subi	r22, 0xFF	; 255
+ 2bc:	7f 4f       	sbci	r23, 0xFF	; 255
+					cont_bit=1; // recomeça no primeiro bit
+ 2be:	21 e0       	ldi	r18, 0x01	; 1
+ 2c0:	30 e0       	ldi	r19, 0x00	; 0
+				return;
+			}
+			// tudo certo, armazenando dados lidos
+			temp=3;// primeiro byte de dados do pacote
+			cont_bit=1; //determina a posição do bit no byte
+			for(cont=0; cont<ModBus.numRegs; cont++) // conta os bits recebidos
+ 2c2:	4f 5f       	subi	r20, 0xFF	; 255
+ 2c4:	5f 4f       	sbci	r21, 0xFF	; 255
+ 2c6:	80 91 34 03 	lds	r24, 0x0334	; 0x800334 <ModBus+0x20a>
+ 2ca:	90 91 35 03 	lds	r25, 0x0335	; 0x800335 <ModBus+0x20b>
+ 2ce:	48 17       	cp	r20, r24
+ 2d0:	59 07       	cpc	r21, r25
+ 2d2:	a0 f2       	brcs	.-88     	; 0x27c <ModBusProcess+0x8c>
+				{
+					temp++; // aponta o proximo byte de dados do pacote
+					cont_bit=1; // recomeça no primeiro bit
+				}
+			}
+			ModBus.erro=semErro;
+ 2d4:	10 92 2b 01 	sts	0x012B, r1	; 0x80012b <ModBus+0x1>
+			return;
+ 2d8:	e5 c0       	rjmp	.+458    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+		}
+		if(ModBus.funcao==3) // se for a função 3
+ 2da:	83 30       	cpi	r24, 0x03	; 3
+ 2dc:	09 f0       	breq	.+2      	; 0x2e0 <ModBusProcess+0xf0>
+ 2de:	44 c0       	rjmp	.+136    	; 0x368 <ModBusProcess+0x178>
+		{
+			if(ModBus.rxbuf[0]!=ModBus.end_modbus)// erro: endereço inválido
+ 2e0:	ea e2       	ldi	r30, 0x2A	; 42
+ 2e2:	f1 e0       	ldi	r31, 0x01	; 1
+ 2e4:	97 81       	ldd	r25, Z+7	; 0x07
+ 2e6:	82 81       	ldd	r24, Z+2	; 0x02
+ 2e8:	98 13       	cpse	r25, r24
+ 2ea:	dc c0       	rjmp	.+440    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[1]!=3)// erro: função inválida
+ 2ec:	80 91 32 01 	lds	r24, 0x0132	; 0x800132 <ModBus+0x8>
+ 2f0:	83 30       	cpi	r24, 0x03	; 3
+ 2f2:	09 f0       	breq	.+2      	; 0x2f6 <ModBusProcess+0x106>
+ 2f4:	d7 c0       	rjmp	.+430    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[2]!=(ModBus.numRegs*2))// erro: contador de bytes incorreto
+ 2f6:	20 91 33 01 	lds	r18, 0x0133	; 0x800133 <ModBus+0x9>
+ 2fa:	30 e0       	ldi	r19, 0x00	; 0
+ 2fc:	80 91 34 03 	lds	r24, 0x0334	; 0x800334 <ModBus+0x20a>
+ 300:	90 91 35 03 	lds	r25, 0x0335	; 0x800335 <ModBus+0x20b>
+ 304:	88 0f       	add	r24, r24
+ 306:	99 1f       	adc	r25, r25
+ 308:	28 17       	cp	r18, r24
+ 30a:	39 07       	cpc	r19, r25
+ 30c:	09 f0       	breq	.+2      	; 0x310 <ModBusProcess+0x120>
+ 30e:	ca c0       	rjmp	.+404    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+ 310:	20 e0       	ldi	r18, 0x00	; 0
+ 312:	30 e0       	ldi	r19, 0x00	; 0
+ 314:	43 e0       	ldi	r20, 0x03	; 3
+ 316:	50 e0       	ldi	r21, 0x00	; 0
+ 318:	1d c0       	rjmp	.+58     	; 0x354 <ModBusProcess+0x164>
+			}
+			// tudo certo, armazenando dados lidos
+			temp=3;// primeiro byte de dados do pacote
+			for(cont=0; cont<ModBus.numRegs; cont++) // conta os bits recebidos
+			{
+				ModBus.data_reg_addr[cont]=(ModBus.rxbuf[temp+1]|(ModBus.rxbuf[temp]<<8));
+ 31a:	e0 91 30 03 	lds	r30, 0x0330	; 0x800330 <ModBus+0x206>
+ 31e:	f0 91 31 03 	lds	r31, 0x0331	; 0x800331 <ModBus+0x207>
+ 322:	c9 01       	movw	r24, r18
+ 324:	88 0f       	add	r24, r24
+ 326:	99 1f       	adc	r25, r25
+ 328:	e8 0f       	add	r30, r24
+ 32a:	f9 1f       	adc	r31, r25
+ 32c:	da 01       	movw	r26, r20
+ 32e:	a5 5d       	subi	r26, 0xD5	; 213
+ 330:	be 4f       	sbci	r27, 0xFE	; 254
+ 332:	17 96       	adiw	r26, 0x07	; 7
+ 334:	6c 91       	ld	r22, X
+ 336:	da 01       	movw	r26, r20
+ 338:	a6 5d       	subi	r26, 0xD6	; 214
+ 33a:	be 4f       	sbci	r27, 0xFE	; 254
+ 33c:	17 96       	adiw	r26, 0x07	; 7
+ 33e:	8c 91       	ld	r24, X
+ 340:	90 e0       	ldi	r25, 0x00	; 0
+ 342:	98 2f       	mov	r25, r24
+ 344:	88 27       	eor	r24, r24
+ 346:	86 2b       	or	r24, r22
+ 348:	91 83       	std	Z+1, r25	; 0x01
+ 34a:	80 83       	st	Z, r24
+				temp=temp+2; // aponta o proximo dado no pacote
+ 34c:	4e 5f       	subi	r20, 0xFE	; 254
+ 34e:	5f 4f       	sbci	r21, 0xFF	; 255
+			{
+				return;
+			}
+			// tudo certo, armazenando dados lidos
+			temp=3;// primeiro byte de dados do pacote
+			for(cont=0; cont<ModBus.numRegs; cont++) // conta os bits recebidos
+ 350:	2f 5f       	subi	r18, 0xFF	; 255
+ 352:	3f 4f       	sbci	r19, 0xFF	; 255
+ 354:	80 91 34 03 	lds	r24, 0x0334	; 0x800334 <ModBus+0x20a>
+ 358:	90 91 35 03 	lds	r25, 0x0335	; 0x800335 <ModBus+0x20b>
+ 35c:	28 17       	cp	r18, r24
+ 35e:	39 07       	cpc	r19, r25
+ 360:	e0 f2       	brcs	.-72     	; 0x31a <ModBusProcess+0x12a>
+			{
+				ModBus.data_reg_addr[cont]=(ModBus.rxbuf[temp+1]|(ModBus.rxbuf[temp]<<8));
+				temp=temp+2; // aponta o proximo dado no pacote
+			}
+			ModBus.erro=semErro;
+ 362:	10 92 2b 01 	sts	0x012B, r1	; 0x80012b <ModBus+0x1>
+			return;
+ 366:	9e c0       	rjmp	.+316    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+		}
+		if(ModBus.funcao==5) // se for a função 5
+ 368:	85 30       	cpi	r24, 0x05	; 5
+ 36a:	31 f5       	brne	.+76     	; 0x3b8 <ModBusProcess+0x1c8>
+		{
+			if(ModBus.rxbuf[0]!=ModBus.end_modbus)// erro: endereço inválido
+ 36c:	ea e2       	ldi	r30, 0x2A	; 42
+ 36e:	f1 e0       	ldi	r31, 0x01	; 1
+ 370:	97 81       	ldd	r25, Z+7	; 0x07
+ 372:	82 81       	ldd	r24, Z+2	; 0x02
+ 374:	98 13       	cpse	r25, r24
+ 376:	96 c0       	rjmp	.+300    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[1]!=5)// erro: função inválida
+ 378:	80 91 32 01 	lds	r24, 0x0132	; 0x800132 <ModBus+0x8>
+ 37c:	85 30       	cpi	r24, 0x05	; 5
+ 37e:	09 f0       	breq	.+2      	; 0x382 <ModBusProcess+0x192>
+ 380:	91 c0       	rjmp	.+290    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[2]!=ModBus.txbuf[2]||ModBus.rxbuf[3]!=ModBus.txbuf[3])// erro: endereço incorreto
+ 382:	90 91 33 01 	lds	r25, 0x0133	; 0x800133 <ModBus+0x9>
+ 386:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <ModBus+0x108>
+ 38a:	98 13       	cpse	r25, r24
+ 38c:	8b c0       	rjmp	.+278    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+ 38e:	90 91 34 01 	lds	r25, 0x0134	; 0x800134 <ModBus+0xa>
+ 392:	80 91 33 02 	lds	r24, 0x0233	; 0x800233 <ModBus+0x109>
+ 396:	98 13       	cpse	r25, r24
+ 398:	85 c0       	rjmp	.+266    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[4]!=ModBus.txbuf[4]||ModBus.rxbuf[5]!=ModBus.txbuf[5])// erro: dado incorreto
+ 39a:	90 91 35 01 	lds	r25, 0x0135	; 0x800135 <ModBus+0xb>
+ 39e:	80 91 34 02 	lds	r24, 0x0234	; 0x800234 <ModBus+0x10a>
+ 3a2:	98 13       	cpse	r25, r24
+ 3a4:	7f c0       	rjmp	.+254    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+ 3a6:	90 91 36 01 	lds	r25, 0x0136	; 0x800136 <ModBus+0xc>
+ 3aa:	80 91 35 02 	lds	r24, 0x0235	; 0x800235 <ModBus+0x10b>
+ 3ae:	98 13       	cpse	r25, r24
+ 3b0:	79 c0       	rjmp	.+242    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			// tudo certo
+			ModBus.erro=semErro;
+ 3b2:	10 92 2b 01 	sts	0x012B, r1	; 0x80012b <ModBus+0x1>
+			return;
+ 3b6:	76 c0       	rjmp	.+236    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+		}
+		if(ModBus.funcao==6) // se for a função 6
+ 3b8:	86 30       	cpi	r24, 0x06	; 6
+ 3ba:	31 f5       	brne	.+76     	; 0x408 <__EEPROM_REGION_LENGTH__+0x8>
+		{
+			if(ModBus.rxbuf[0]!=ModBus.end_modbus)// erro: endereço inválido
+ 3bc:	ea e2       	ldi	r30, 0x2A	; 42
+ 3be:	f1 e0       	ldi	r31, 0x01	; 1
+ 3c0:	97 81       	ldd	r25, Z+7	; 0x07
+ 3c2:	82 81       	ldd	r24, Z+2	; 0x02
+ 3c4:	98 13       	cpse	r25, r24
+ 3c6:	6e c0       	rjmp	.+220    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[1]!=6)// erro: função inválida
+ 3c8:	80 91 32 01 	lds	r24, 0x0132	; 0x800132 <ModBus+0x8>
+ 3cc:	86 30       	cpi	r24, 0x06	; 6
+ 3ce:	09 f0       	breq	.+2      	; 0x3d2 <ModBusProcess+0x1e2>
+ 3d0:	69 c0       	rjmp	.+210    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[2]!=ModBus.txbuf[2]||ModBus.rxbuf[3]!=ModBus.txbuf[3])// erro: endereço incorreto
+ 3d2:	90 91 33 01 	lds	r25, 0x0133	; 0x800133 <ModBus+0x9>
+ 3d6:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <ModBus+0x108>
+ 3da:	98 13       	cpse	r25, r24
+ 3dc:	63 c0       	rjmp	.+198    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+ 3de:	90 91 34 01 	lds	r25, 0x0134	; 0x800134 <ModBus+0xa>
+ 3e2:	80 91 33 02 	lds	r24, 0x0233	; 0x800233 <ModBus+0x109>
+ 3e6:	98 13       	cpse	r25, r24
+ 3e8:	5d c0       	rjmp	.+186    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[4]!=ModBus.txbuf[4]||ModBus.rxbuf[5]!=ModBus.txbuf[5])// erro: dado incorreto
+ 3ea:	90 91 35 01 	lds	r25, 0x0135	; 0x800135 <ModBus+0xb>
+ 3ee:	80 91 34 02 	lds	r24, 0x0234	; 0x800234 <ModBus+0x10a>
+ 3f2:	98 13       	cpse	r25, r24
+ 3f4:	57 c0       	rjmp	.+174    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+ 3f6:	90 91 36 01 	lds	r25, 0x0136	; 0x800136 <ModBus+0xc>
+ 3fa:	80 91 35 02 	lds	r24, 0x0235	; 0x800235 <ModBus+0x10b>
+ 3fe:	98 13       	cpse	r25, r24
+ 400:	51 c0       	rjmp	.+162    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			// tudo certo
+			ModBus.erro=semErro;
+ 402:	10 92 2b 01 	sts	0x012B, r1	; 0x80012b <ModBus+0x1>
+			return;
+ 406:	4e c0       	rjmp	.+156    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+		}
+		if(ModBus.funcao==15) // se for a função 15
+ 408:	8f 30       	cpi	r24, 0x0F	; 15
+ 40a:	31 f5       	brne	.+76     	; 0x458 <__EEPROM_REGION_LENGTH__+0x58>
+		{
+			if(ModBus.rxbuf[0]!=ModBus.end_modbus)// erro: endereço inválido
+ 40c:	ea e2       	ldi	r30, 0x2A	; 42
+ 40e:	f1 e0       	ldi	r31, 0x01	; 1
+ 410:	97 81       	ldd	r25, Z+7	; 0x07
+ 412:	82 81       	ldd	r24, Z+2	; 0x02
+ 414:	98 13       	cpse	r25, r24
+ 416:	46 c0       	rjmp	.+140    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[1]!=15)// erro: função inválida
+ 418:	80 91 32 01 	lds	r24, 0x0132	; 0x800132 <ModBus+0x8>
+ 41c:	8f 30       	cpi	r24, 0x0F	; 15
+ 41e:	09 f0       	breq	.+2      	; 0x422 <__EEPROM_REGION_LENGTH__+0x22>
+ 420:	41 c0       	rjmp	.+130    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[2]!=ModBus.txbuf[2]||ModBus.rxbuf[3]!=ModBus.txbuf[3])// erro: endereço incorreto
+ 422:	90 91 33 01 	lds	r25, 0x0133	; 0x800133 <ModBus+0x9>
+ 426:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <ModBus+0x108>
+ 42a:	98 13       	cpse	r25, r24
+ 42c:	3b c0       	rjmp	.+118    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+ 42e:	90 91 34 01 	lds	r25, 0x0134	; 0x800134 <ModBus+0xa>
+ 432:	80 91 33 02 	lds	r24, 0x0233	; 0x800233 <ModBus+0x109>
+ 436:	98 13       	cpse	r25, r24
+ 438:	35 c0       	rjmp	.+106    	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[4]!=ModBus.txbuf[4]||ModBus.rxbuf[5]!=ModBus.txbuf[5])// erro: dado incorreto
+ 43a:	90 91 35 01 	lds	r25, 0x0135	; 0x800135 <ModBus+0xb>
+ 43e:	80 91 34 02 	lds	r24, 0x0234	; 0x800234 <ModBus+0x10a>
+ 442:	98 13       	cpse	r25, r24
+ 444:	2f c0       	rjmp	.+94     	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+ 446:	90 91 36 01 	lds	r25, 0x0136	; 0x800136 <ModBus+0xc>
+ 44a:	80 91 35 02 	lds	r24, 0x0235	; 0x800235 <ModBus+0x10b>
+ 44e:	98 13       	cpse	r25, r24
+ 450:	29 c0       	rjmp	.+82     	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			// tudo certo
+			ModBus.erro=semErro;
+ 452:	10 92 2b 01 	sts	0x012B, r1	; 0x80012b <ModBus+0x1>
+			return;
+ 456:	26 c0       	rjmp	.+76     	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+		}
+		if(ModBus.funcao==16) // se for a função 16
+ 458:	80 31       	cpi	r24, 0x10	; 16
+ 45a:	21 f5       	brne	.+72     	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+		{
+			if(ModBus.rxbuf[0]!=ModBus.end_modbus)// erro: endereço inválido
+ 45c:	ea e2       	ldi	r30, 0x2A	; 42
+ 45e:	f1 e0       	ldi	r31, 0x01	; 1
+ 460:	97 81       	ldd	r25, Z+7	; 0x07
+ 462:	82 81       	ldd	r24, Z+2	; 0x02
+ 464:	98 13       	cpse	r25, r24
+ 466:	1e c0       	rjmp	.+60     	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[1]!=16)// erro: função inválida
+ 468:	80 91 32 01 	lds	r24, 0x0132	; 0x800132 <ModBus+0x8>
+ 46c:	80 31       	cpi	r24, 0x10	; 16
+ 46e:	d1 f4       	brne	.+52     	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[2]!=ModBus.txbuf[2]||ModBus.rxbuf[3]!=ModBus.txbuf[3])// erro: endereço incorreto
+ 470:	90 91 33 01 	lds	r25, 0x0133	; 0x800133 <ModBus+0x9>
+ 474:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <ModBus+0x108>
+ 478:	98 13       	cpse	r25, r24
+ 47a:	14 c0       	rjmp	.+40     	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+ 47c:	90 91 34 01 	lds	r25, 0x0134	; 0x800134 <ModBus+0xa>
+ 480:	80 91 33 02 	lds	r24, 0x0233	; 0x800233 <ModBus+0x109>
+ 484:	98 13       	cpse	r25, r24
+ 486:	0e c0       	rjmp	.+28     	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			if(ModBus.rxbuf[4]!=ModBus.txbuf[4]||ModBus.rxbuf[5]!=ModBus.txbuf[5])// erro: dado incorreto
+ 488:	90 91 35 01 	lds	r25, 0x0135	; 0x800135 <ModBus+0xb>
+ 48c:	80 91 34 02 	lds	r24, 0x0234	; 0x800234 <ModBus+0x10a>
+ 490:	98 13       	cpse	r25, r24
+ 492:	08 c0       	rjmp	.+16     	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+ 494:	90 91 36 01 	lds	r25, 0x0136	; 0x800136 <ModBus+0xc>
+ 498:	80 91 35 02 	lds	r24, 0x0235	; 0x800235 <ModBus+0x10b>
+ 49c:	98 13       	cpse	r25, r24
+ 49e:	02 c0       	rjmp	.+4      	; 0x4a4 <__EEPROM_REGION_LENGTH__+0xa4>
+			{
+				return;
+			}
+			// tudo certo
+			ModBus.erro=semErro;
+ 4a0:	10 92 2b 01 	sts	0x012B, r1	; 0x80012b <ModBus+0x1>
+			return;
+		}
+	}
+}
+ 4a4:	df 91       	pop	r29
+ 4a6:	cf 91       	pop	r28
+ 4a8:	1f 91       	pop	r17
+ 4aa:	0f 91       	pop	r16
+ 4ac:	08 95       	ret
+
+000004ae <ModBusTimeout>:
+
+void ModBusTimeout() // atingiu o tempo máximo para responder
+{
+	ModBus.status=semResposta;
+ 4ae:	ea e2       	ldi	r30, 0x2A	; 42
+ 4b0:	f1 e0       	ldi	r31, 0x01	; 1
+ 4b2:	84 e0       	ldi	r24, 0x04	; 4
+ 4b4:	80 83       	st	Z, r24
+	ModBus.erro=timeout;
+ 4b6:	81 e0       	ldi	r24, 0x01	; 1
+ 4b8:	81 83       	std	Z+1, r24	; 0x01
+ 4ba:	08 95       	ret
+
+000004bc <inicia_timer_1ms>:
+//	Liga o temporizador usado na modBus com o intervalor ajustado para 1ms
+//	Ajustar para o clock utilizado
+//////////////////////////////////////////////////////////////////////////////////////////////////
+void  inicia_timer_1ms()
+{
+	OCR2=125;			// Ajusta o valor de comparação do timer 2 
+ 4bc:	8d e7       	ldi	r24, 0x7D	; 125
+ 4be:	83 bd       	out	0x23, r24	; 35
+	TCNT2=0;			// Zera a contagem do timer 2
+ 4c0:	14 bc       	out	0x24, r1	; 36
+	TCCR2=0b00001100;	// habilita o clock do timer 2 com prescaller
+ 4c2:	8c e0       	ldi	r24, 0x0C	; 12
+ 4c4:	85 bd       	out	0x25, r24	; 37
+	TIMSK|=0b10000000;	// habilita a interrupção do timer 2
+ 4c6:	89 b7       	in	r24, 0x39	; 57
+ 4c8:	80 68       	ori	r24, 0x80	; 128
+ 4ca:	89 bf       	out	0x39, r24	; 57
+ 4cc:	08 95       	ret
+
+000004ce <__vector_13>:
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//	Interrupção de recepção de caractere
+//////////////////////////////////////////////////////////////////////////////////////////////////
+ISR(USART_RXC_vect)
+{
+ 4ce:	1f 92       	push	r1
+ 4d0:	0f 92       	push	r0
+ 4d2:	0f b6       	in	r0, 0x3f	; 63
+ 4d4:	0f 92       	push	r0
+ 4d6:	11 24       	eor	r1, r1
+ 4d8:	2f 93       	push	r18
+ 4da:	3f 93       	push	r19
+ 4dc:	4f 93       	push	r20
+ 4de:	5f 93       	push	r21
+ 4e0:	6f 93       	push	r22
+ 4e2:	7f 93       	push	r23
+ 4e4:	8f 93       	push	r24
+ 4e6:	9f 93       	push	r25
+ 4e8:	af 93       	push	r26
+ 4ea:	bf 93       	push	r27
+ 4ec:	ef 93       	push	r30
+ 4ee:	ff 93       	push	r31
+	if(ModBus.status==aguardandoResposta) // está aguardado dados
+ 4f0:	80 91 2a 01 	lds	r24, 0x012A	; 0x80012a <ModBus>
+ 4f4:	82 30       	cpi	r24, 0x02	; 2
+ 4f6:	41 f5       	brne	.+80     	; 0x548 <__vector_13+0x7a>
+	{
+		ModBus.rxbuf[ModBus.rxpt] = UDR; // recebe o byte
+ 4f8:	20 91 36 03 	lds	r18, 0x0336	; 0x800336 <ModBus+0x20c>
+ 4fc:	30 91 37 03 	lds	r19, 0x0337	; 0x800337 <ModBus+0x20d>
+ 500:	8c b1       	in	r24, 0x0c	; 12
+ 502:	f9 01       	movw	r30, r18
+ 504:	e6 5d       	subi	r30, 0xD6	; 214
+ 506:	fe 4f       	sbci	r31, 0xFE	; 254
+ 508:	87 83       	std	Z+7, r24	; 0x07
+		if(ModBus.rxpt==ModBus.rxsize-1) // pacote completo
+ 50a:	80 91 2d 01 	lds	r24, 0x012D	; 0x80012d <ModBus+0x3>
+ 50e:	90 91 2e 01 	lds	r25, 0x012E	; 0x80012e <ModBus+0x4>
+ 512:	01 97       	sbiw	r24, 0x01	; 1
+ 514:	28 17       	cp	r18, r24
+ 516:	39 07       	cpc	r19, r25
+ 518:	59 f4       	brne	.+22     	; 0x530 <__vector_13+0x62>
+		{
+			
+			modBusTimeoutCounterStop();
+ 51a:	89 ee       	ldi	r24, 0xE9	; 233
+ 51c:	93 e0       	ldi	r25, 0x03	; 3
+ 51e:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 522:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+			ModBus.status=respostaRecebida;
+ 526:	83 e0       	ldi	r24, 0x03	; 3
+ 528:	80 93 2a 01 	sts	0x012A, r24	; 0x80012a <ModBus>
+			ModBusProcess(); // processa a resposta
+ 52c:	0e 94 f8 00 	call	0x1f0	; 0x1f0 <ModBusProcess>
+		}
+		if(ModBus.rxpt<tam_buff_recep) ModBus.rxpt++; // incrementa o ponteiro de recepção se o tamanho não chegou no limite
+ 530:	80 91 36 03 	lds	r24, 0x0336	; 0x800336 <ModBus+0x20c>
+ 534:	90 91 37 03 	lds	r25, 0x0337	; 0x800337 <ModBus+0x20d>
+ 538:	8f 3f       	cpi	r24, 0xFF	; 255
+ 53a:	91 05       	cpc	r25, r1
+ 53c:	28 f4       	brcc	.+10     	; 0x548 <__vector_13+0x7a>
+ 53e:	01 96       	adiw	r24, 0x01	; 1
+ 540:	90 93 37 03 	sts	0x0337, r25	; 0x800337 <ModBus+0x20d>
+ 544:	80 93 36 03 	sts	0x0336, r24	; 0x800336 <ModBus+0x20c>
+	}
+}
+ 548:	ff 91       	pop	r31
+ 54a:	ef 91       	pop	r30
+ 54c:	bf 91       	pop	r27
+ 54e:	af 91       	pop	r26
+ 550:	9f 91       	pop	r25
+ 552:	8f 91       	pop	r24
+ 554:	7f 91       	pop	r23
+ 556:	6f 91       	pop	r22
+ 558:	5f 91       	pop	r21
+ 55a:	4f 91       	pop	r20
+ 55c:	3f 91       	pop	r19
+ 55e:	2f 91       	pop	r18
+ 560:	0f 90       	pop	r0
+ 562:	0f be       	out	0x3f, r0	; 63
+ 564:	0f 90       	pop	r0
+ 566:	1f 90       	pop	r1
+ 568:	18 95       	reti
+
+0000056a <__vector_14>:
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//	Interrupção de caractere transmitido
+//////////////////////////////////////////////////////////////////////////////////////////////////
+ISR(USART_UDRE_vect) // interrupção de caractere transmitido
+{
+ 56a:	1f 92       	push	r1
+ 56c:	0f 92       	push	r0
+ 56e:	0f b6       	in	r0, 0x3f	; 63
+ 570:	0f 92       	push	r0
+ 572:	11 24       	eor	r1, r1
+ 574:	2f 93       	push	r18
+ 576:	3f 93       	push	r19
+ 578:	8f 93       	push	r24
+ 57a:	9f 93       	push	r25
+ 57c:	ef 93       	push	r30
+ 57e:	ff 93       	push	r31
+	if(ModBus.txpt>=ModBus.txsize) // se transmitiu o ultimo caractere do pacote
+ 580:	80 91 38 03 	lds	r24, 0x0338	; 0x800338 <ModBus+0x20e>
+ 584:	90 91 39 03 	lds	r25, 0x0339	; 0x800339 <ModBus+0x20f>
+ 588:	20 91 2f 01 	lds	r18, 0x012F	; 0x80012f <ModBus+0x5>
+ 58c:	30 91 30 01 	lds	r19, 0x0130	; 0x800130 <ModBus+0x6>
+ 590:	82 17       	cp	r24, r18
+ 592:	93 07       	cpc	r25, r19
+ 594:	78 f0       	brcs	.+30     	; 0x5b4 <__vector_14+0x4a>
+	{
+		ModBus.rxpt=0;
+ 596:	10 92 37 03 	sts	0x0337, r1	; 0x800337 <ModBus+0x20d>
+ 59a:	10 92 36 03 	sts	0x0336, r1	; 0x800336 <ModBus+0x20c>
+		modBusTimeoutCounterStart();
+ 59e:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 5a2:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+		ModBus.status=aguardandoResposta;
+ 5a6:	82 e0       	ldi	r24, 0x02	; 2
+ 5a8:	80 93 2a 01 	sts	0x012A, r24	; 0x80012a <ModBus>
+		UCSRB &= ~(1 << UDRIE); // desabilita a interrupção e transmissão
+ 5ac:	8a b1       	in	r24, 0x0a	; 10
+ 5ae:	8f 7d       	andi	r24, 0xDF	; 223
+ 5b0:	8a b9       	out	0x0a, r24	; 10
+ 5b2:	0c c0       	rjmp	.+24     	; 0x5cc <__vector_14+0x62>
+		//PORTD&=~0b00000100; // Habilita a recepção do driver 485 se necessário
+	}
+	else // se ainda não é o ultimo byte do pacote
+	{
+		UDR = ModBus.txbuf[ModBus.txpt]; // transmite o byte
+ 5b4:	fc 01       	movw	r30, r24
+ 5b6:	e0 5d       	subi	r30, 0xD0	; 208
+ 5b8:	fd 4f       	sbci	r31, 0xFD	; 253
+ 5ba:	80 81       	ld	r24, Z
+ 5bc:	8c b9       	out	0x0c, r24	; 12
+		ModBus.txpt++; // incrementa o ponteiro de transmissão
+ 5be:	e8 e3       	ldi	r30, 0x38	; 56
+ 5c0:	f3 e0       	ldi	r31, 0x03	; 3
+ 5c2:	80 81       	ld	r24, Z
+ 5c4:	91 81       	ldd	r25, Z+1	; 0x01
+ 5c6:	01 96       	adiw	r24, 0x01	; 1
+ 5c8:	91 83       	std	Z+1, r25	; 0x01
+ 5ca:	80 83       	st	Z, r24
+	}
+}
+ 5cc:	ff 91       	pop	r31
+ 5ce:	ef 91       	pop	r30
+ 5d0:	9f 91       	pop	r25
+ 5d2:	8f 91       	pop	r24
+ 5d4:	3f 91       	pop	r19
+ 5d6:	2f 91       	pop	r18
+ 5d8:	0f 90       	pop	r0
+ 5da:	0f be       	out	0x3f, r0	; 63
+ 5dc:	0f 90       	pop	r0
+ 5de:	1f 90       	pop	r1
+ 5e0:	18 95       	reti
+
+000005e2 <__vector_4>:
+
+
+
+ISR(TIMER2_COMP_vect) // interrupção do temporizador
+{
+ 5e2:	1f 92       	push	r1
+ 5e4:	0f 92       	push	r0
+ 5e6:	0f b6       	in	r0, 0x3f	; 63
+ 5e8:	0f 92       	push	r0
+ 5ea:	11 24       	eor	r1, r1
+ 5ec:	2f 93       	push	r18
+ 5ee:	3f 93       	push	r19
+ 5f0:	4f 93       	push	r20
+ 5f2:	5f 93       	push	r21
+ 5f4:	6f 93       	push	r22
+ 5f6:	7f 93       	push	r23
+ 5f8:	8f 93       	push	r24
+ 5fa:	9f 93       	push	r25
+ 5fc:	af 93       	push	r26
+ 5fe:	bf 93       	push	r27
+ 600:	ef 93       	push	r30
+ 602:	ff 93       	push	r31
+	if(modBusTimeoutCounter==modBusTimeout_ms) // estouro de timeout
+ 604:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 608:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 60c:	88 3e       	cpi	r24, 0xE8	; 232
+ 60e:	93 40       	sbci	r25, 0x03	; 3
+ 610:	59 f4       	brne	.+22     	; 0x628 <__vector_4+0x46>
+	{
+		 ModBusTimeout(); // chama a função que trata a falta de resposta do escravo
+ 612:	0e 94 57 02 	call	0x4ae	; 0x4ae <ModBusTimeout>
+		 modBusTimeoutCounter++; // incrementa para parar de contar 
+ 616:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 61a:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 61e:	01 96       	adiw	r24, 0x01	; 1
+ 620:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 624:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+	}
+	if(modBusTimeoutCounter<modBusTimeout_ms) modBusTimeoutCounter++;
+ 628:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 62c:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 630:	88 3e       	cpi	r24, 0xE8	; 232
+ 632:	23 e0       	ldi	r18, 0x03	; 3
+ 634:	92 07       	cpc	r25, r18
+ 636:	28 f4       	brcc	.+10     	; 0x642 <__vector_4+0x60>
+ 638:	01 96       	adiw	r24, 0x01	; 1
+ 63a:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 63e:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+}
+ 642:	ff 91       	pop	r31
+ 644:	ef 91       	pop	r30
+ 646:	bf 91       	pop	r27
+ 648:	af 91       	pop	r26
+ 64a:	9f 91       	pop	r25
+ 64c:	8f 91       	pop	r24
+ 64e:	7f 91       	pop	r23
+ 650:	6f 91       	pop	r22
+ 652:	5f 91       	pop	r21
+ 654:	4f 91       	pop	r20
+ 656:	3f 91       	pop	r19
+ 658:	2f 91       	pop	r18
+ 65a:	0f 90       	pop	r0
+ 65c:	0f be       	out	0x3f, r0	; 63
+ 65e:	0f 90       	pop	r0
+ 660:	1f 90       	pop	r1
+ 662:	18 95       	reti
+
+00000664 <usart_init>:
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//	Inicializa a comunicação serial
+//////////////////////////////////////////////////////////////////////////////////////////////////
+void usart_init() // inicia a comunicação serial
+{
+	UCSRB |= (1 << RXEN) | (1 << TXEN); // Turn on the transmission and reception circuitry
+ 664:	8a b1       	in	r24, 0x0a	; 10
+ 666:	88 61       	ori	r24, 0x18	; 24
+ 668:	8a b9       	out	0x0a, r24	; 10
+	#if STOPBITS == 2
+	UCSRC |= (1 << URSEL) | (1 << UCSZ0) | (1 << UCSZ1) | (1 << USBS);  // Use 8-bit character sizes 2 stop bits
+ 66a:	80 b5       	in	r24, 0x20	; 32
+ 66c:	8e 68       	ori	r24, 0x8E	; 142
+ 66e:	80 bd       	out	0x20, r24	; 32
+	#else
+	UCSRC |= (1 << URSEL) | (1 << UCSZ0) | (1 << UCSZ1);  // Use 8-bit character sizes 1 stop bit
+	#endif
+
+	UBRRL = BAUD_PRESCALE; // Load lower 8-bits of the baud rate value into the low byte of the UBRR register
+ 670:	89 e1       	ldi	r24, 0x19	; 25
+ 672:	89 b9       	out	0x09, r24	; 9
+	UBRRH = (BAUD_PRESCALE >> 8); // Load upper 8-bits of the baud rate value into the high byte of the UBRR register
+ 674:	10 bc       	out	0x20, r1	; 32
+
+	UCSRB |= (1 << RXCIE); // Enable the USART Recieve Complete interrupt (USART_RXC)
+ 676:	8a b1       	in	r24, 0x0a	; 10
+ 678:	80 68       	ori	r24, 0x80	; 128
+ 67a:	8a b9       	out	0x0a, r24	; 10
+ 67c:	08 95       	ret
+
+0000067e <main>:
+//                                    M A I N
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+int main()
+{
+	usart_init(); // inicia a comunicação serial utilizada na ModBus
+ 67e:	0e 94 32 03 	call	0x664	; 0x664 <usart_init>
+	ModBusReset(); // prepara para receber a transmissão
+ 682:	0e 94 97 00 	call	0x12e	; 0x12e <ModBusReset>
+	inicia_timer_1ms();
+ 686:	0e 94 5e 02 	call	0x4bc	; 0x4bc <inicia_timer_1ms>
+	// inserir outras inicializações aqui
+	
+	sei(); // Habilita o Global Interrupt Enable flag permitindo interrupções
+ 68a:	78 94       	sei
+	
+	DDRC=0b11111111; // saídas
+ 68c:	8f ef       	ldi	r24, 0xFF	; 255
+ 68e:	84 bb       	out	0x14, r24	; 20
+
+	while(1)
+	{
+		// entradas
+		if(E1) bitData[0]=1;
+ 690:	b0 9b       	sbis	0x16, 0	; 22
+ 692:	04 c0       	rjmp	.+8      	; 0x69c <main+0x1e>
+ 694:	81 e0       	ldi	r24, 0x01	; 1
+ 696:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <bitData>
+ 69a:	02 c0       	rjmp	.+4      	; 0x6a0 <main+0x22>
+		else bitData[0]=0;
+ 69c:	10 92 c6 00 	sts	0x00C6, r1	; 0x8000c6 <bitData>
+		
+		if(E2) bitData[1]=1;
+ 6a0:	b1 9b       	sbis	0x16, 1	; 22
+ 6a2:	04 c0       	rjmp	.+8      	; 0x6ac <main+0x2e>
+ 6a4:	81 e0       	ldi	r24, 0x01	; 1
+ 6a6:	80 93 c7 00 	sts	0x00C7, r24	; 0x8000c7 <bitData+0x1>
+ 6aa:	02 c0       	rjmp	.+4      	; 0x6b0 <main+0x32>
+		else bitData[1]=0;
+ 6ac:	10 92 c7 00 	sts	0x00C7, r1	; 0x8000c7 <bitData+0x1>
+
+		if(E3) bitData[2]=1;
+ 6b0:	b2 9b       	sbis	0x16, 2	; 22
+ 6b2:	04 c0       	rjmp	.+8      	; 0x6bc <main+0x3e>
+ 6b4:	81 e0       	ldi	r24, 0x01	; 1
+ 6b6:	80 93 c8 00 	sts	0x00C8, r24	; 0x8000c8 <bitData+0x2>
+ 6ba:	02 c0       	rjmp	.+4      	; 0x6c0 <main+0x42>
+		else bitData[2]=0;
+ 6bc:	10 92 c8 00 	sts	0x00C8, r1	; 0x8000c8 <bitData+0x2>
+		
+		if(E4) bitData[3]=1;
+ 6c0:	b3 9b       	sbis	0x16, 3	; 22
+ 6c2:	04 c0       	rjmp	.+8      	; 0x6cc <main+0x4e>
+ 6c4:	81 e0       	ldi	r24, 0x01	; 1
+ 6c6:	80 93 c9 00 	sts	0x00C9, r24	; 0x8000c9 <bitData+0x3>
+ 6ca:	02 c0       	rjmp	.+4      	; 0x6d0 <main+0x52>
+		else bitData[3]=0;
+ 6cc:	10 92 c9 00 	sts	0x00C9, r1	; 0x8000c9 <bitData+0x3>
+		
+		if(E5) bitData[4]=1;
+ 6d0:	b4 9b       	sbis	0x16, 4	; 22
+ 6d2:	04 c0       	rjmp	.+8      	; 0x6dc <main+0x5e>
+ 6d4:	81 e0       	ldi	r24, 0x01	; 1
+ 6d6:	80 93 ca 00 	sts	0x00CA, r24	; 0x8000ca <bitData+0x4>
+ 6da:	02 c0       	rjmp	.+4      	; 0x6e0 <main+0x62>
+		else bitData[4]=0;
+ 6dc:	10 92 ca 00 	sts	0x00CA, r1	; 0x8000ca <bitData+0x4>
+		
+		if(E6) bitData[5]=1;
+ 6e0:	87 9b       	sbis	0x10, 7	; 16
+ 6e2:	04 c0       	rjmp	.+8      	; 0x6ec <main+0x6e>
+ 6e4:	81 e0       	ldi	r24, 0x01	; 1
+ 6e6:	80 93 cb 00 	sts	0x00CB, r24	; 0x8000cb <bitData+0x5>
+ 6ea:	02 c0       	rjmp	.+4      	; 0x6f0 <main+0x72>
+		else bitData[5]=0;
+ 6ec:	10 92 cb 00 	sts	0x00CB, r1	; 0x8000cb <bitData+0x5>
+		
+		if(E7) bitData[6]=1;
+ 6f0:	80 9b       	sbis	0x10, 0	; 16
+ 6f2:	04 c0       	rjmp	.+8      	; 0x6fc <main+0x7e>
+ 6f4:	81 e0       	ldi	r24, 0x01	; 1
+ 6f6:	80 93 cc 00 	sts	0x00CC, r24	; 0x8000cc <bitData+0x6>
+ 6fa:	02 c0       	rjmp	.+4      	; 0x700 <main+0x82>
+		else bitData[6]=0;
+ 6fc:	10 92 cc 00 	sts	0x00CC, r1	; 0x8000cc <bitData+0x6>
+		
+		if(E8) bitData[7]=1;
+ 700:	81 9b       	sbis	0x10, 1	; 16
+ 702:	04 c0       	rjmp	.+8      	; 0x70c <main+0x8e>
+ 704:	81 e0       	ldi	r24, 0x01	; 1
+ 706:	80 93 cd 00 	sts	0x00CD, r24	; 0x8000cd <bitData+0x7>
+ 70a:	02 c0       	rjmp	.+4      	; 0x710 <main+0x92>
+		else bitData[7]=0;
+ 70c:	10 92 cd 00 	sts	0x00CD, r1	; 0x8000cd <bitData+0x7>
+		
+		if(E9) bitData[8]=1;
+ 710:	82 9b       	sbis	0x10, 2	; 16
+ 712:	04 c0       	rjmp	.+8      	; 0x71c <main+0x9e>
+ 714:	81 e0       	ldi	r24, 0x01	; 1
+ 716:	80 93 ce 00 	sts	0x00CE, r24	; 0x8000ce <bitData+0x8>
+ 71a:	02 c0       	rjmp	.+4      	; 0x720 <main+0xa2>
+		else bitData[8]=0;
+ 71c:	10 92 ce 00 	sts	0x00CE, r1	; 0x8000ce <bitData+0x8>
+		
+		if(E10) bitData[9]=1;
+ 720:	83 9b       	sbis	0x10, 3	; 16
+ 722:	04 c0       	rjmp	.+8      	; 0x72c <main+0xae>
+ 724:	81 e0       	ldi	r24, 0x01	; 1
+ 726:	80 93 cf 00 	sts	0x00CF, r24	; 0x8000cf <bitData+0x9>
+ 72a:	02 c0       	rjmp	.+4      	; 0x730 <main+0xb2>
+		else bitData[9]=0;
+ 72c:	10 92 cf 00 	sts	0x00CF, r1	; 0x8000cf <bitData+0x9>
+		
+		if(E11) bitData[10]=1;
+ 730:	84 9b       	sbis	0x10, 4	; 16
+ 732:	04 c0       	rjmp	.+8      	; 0x73c <main+0xbe>
+ 734:	81 e0       	ldi	r24, 0x01	; 1
+ 736:	80 93 d0 00 	sts	0x00D0, r24	; 0x8000d0 <bitData+0xa>
+ 73a:	02 c0       	rjmp	.+4      	; 0x740 <main+0xc2>
+		else bitData[10]=0;
+ 73c:	10 92 d0 00 	sts	0x00D0, r1	; 0x8000d0 <bitData+0xa>
+		
+		if(E12) bitData[11]=1;
+ 740:	85 9b       	sbis	0x10, 5	; 16
+ 742:	04 c0       	rjmp	.+8      	; 0x74c <main+0xce>
+ 744:	81 e0       	ldi	r24, 0x01	; 1
+ 746:	80 93 d1 00 	sts	0x00D1, r24	; 0x8000d1 <bitData+0xb>
+ 74a:	02 c0       	rjmp	.+4      	; 0x750 <main+0xd2>
+		else bitData[11]=0;
+ 74c:	10 92 d1 00 	sts	0x00D1, r1	; 0x8000d1 <bitData+0xb>
+		
+		if(E13) bitData[12]=1;
+ 750:	86 9b       	sbis	0x10, 6	; 16
+ 752:	04 c0       	rjmp	.+8      	; 0x75c <main+0xde>
+ 754:	81 e0       	ldi	r24, 0x01	; 1
+ 756:	80 93 d2 00 	sts	0x00D2, r24	; 0x8000d2 <bitData+0xc>
+ 75a:	02 c0       	rjmp	.+4      	; 0x760 <main+0xe2>
+		else bitData[12]=0;
+ 75c:	10 92 d2 00 	sts	0x00D2, r1	; 0x8000d2 <bitData+0xc>
+		
+		////
+		if(ModBus.status==inativo)
+ 760:	80 91 2a 01 	lds	r24, 0x012A	; 0x80012a <ModBus>
+ 764:	81 11       	cpse	r24, r1
+ 766:	33 c0       	rjmp	.+102    	; 0x7ce <main+0x150>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 768:	2f ef       	ldi	r18, 0xFF	; 255
+ 76a:	89 e6       	ldi	r24, 0x69	; 105
+ 76c:	98 e1       	ldi	r25, 0x18	; 24
+ 76e:	21 50       	subi	r18, 0x01	; 1
+ 770:	80 40       	sbci	r24, 0x00	; 0
+ 772:	90 40       	sbci	r25, 0x00	; 0
+ 774:	e1 f7       	brne	.-8      	; 0x76e <main+0xf0>
+ 776:	00 c0       	rjmp	.+0      	; 0x778 <main+0xfa>
+ 778:	00 00       	nop
+			_delay_ms(1000);
+			//modBusReadCoilStatusFC01(24, 1, &bitData[24]);
+			//modBusReadHoldingRegistersFC03(10, 22, wordData);
+			//modBusForceSingleCoilFC05(1, bitData[0]);
+			//modBusPresetSingleRegisterFC06(12,11223);
+			bitData[30]=1;
+ 77a:	e6 ec       	ldi	r30, 0xC6	; 198
+ 77c:	f0 e0       	ldi	r31, 0x00	; 0
+ 77e:	81 e0       	ldi	r24, 0x01	; 1
+ 780:	86 8f       	std	Z+30, r24	; 0x1e
+			bitData[31]=0;
+ 782:	17 8e       	std	Z+31, r1	; 0x1f
+			bitData[32]=0;
+ 784:	10 a2       	std	Z+32, r1	; 0x20
+			bitData[33]=1;
+ 786:	81 a3       	std	Z+33, r24	; 0x21
+			bitData[34]=1;
+ 788:	82 a3       	std	Z+34, r24	; 0x22
+			bitData[35]=0;
+ 78a:	13 a2       	std	Z+35, r1	; 0x23
+			bitData[36]=0;
+ 78c:	14 a2       	std	Z+36, r1	; 0x24
+			bitData[37]=1;
+ 78e:	85 a3       	std	Z+37, r24	; 0x25
+			bitData[38]=0;
+ 790:	16 a2       	std	Z+38, r1	; 0x26
+			bitData[39]=1;
+ 792:	87 a3       	std	Z+39, r24	; 0x27
+			//modBusForceMultipleCoilsFC15(30, 10, &bitData[30]);
+			wordData[0]=10;
+ 794:	e2 e6       	ldi	r30, 0x62	; 98
+ 796:	f0 e0       	ldi	r31, 0x00	; 0
+ 798:	8a e0       	ldi	r24, 0x0A	; 10
+ 79a:	90 e0       	ldi	r25, 0x00	; 0
+ 79c:	91 83       	std	Z+1, r25	; 0x01
+ 79e:	80 83       	st	Z, r24
+			wordData[1]=11;
+ 7a0:	8b e0       	ldi	r24, 0x0B	; 11
+ 7a2:	90 e0       	ldi	r25, 0x00	; 0
+ 7a4:	93 83       	std	Z+3, r25	; 0x03
+ 7a6:	82 83       	std	Z+2, r24	; 0x02
+			wordData[2]=12;
+ 7a8:	8c e0       	ldi	r24, 0x0C	; 12
+ 7aa:	90 e0       	ldi	r25, 0x00	; 0
+ 7ac:	95 83       	std	Z+5, r25	; 0x05
+ 7ae:	84 83       	std	Z+4, r24	; 0x04
+			wordData[3]=13;
+ 7b0:	8d e0       	ldi	r24, 0x0D	; 13
+ 7b2:	90 e0       	ldi	r25, 0x00	; 0
+ 7b4:	97 83       	std	Z+7, r25	; 0x07
+ 7b6:	86 83       	std	Z+6, r24	; 0x06
+			wordData[4]=14;
+ 7b8:	8e e0       	ldi	r24, 0x0E	; 14
+ 7ba:	90 e0       	ldi	r25, 0x00	; 0
+ 7bc:	91 87       	std	Z+9, r25	; 0x09
+ 7be:	80 87       	std	Z+8, r24	; 0x08
+			modBusPresetMultipleRegistersFC16(10, 5, wordData);
+ 7c0:	af 01       	movw	r20, r30
+ 7c2:	65 e0       	ldi	r22, 0x05	; 5
+ 7c4:	70 e0       	ldi	r23, 0x00	; 0
+ 7c6:	8a e0       	ldi	r24, 0x0A	; 10
+ 7c8:	90 e0       	ldi	r25, 0x00	; 0
+ 7ca:	0e 94 9e 00 	call	0x13c	; 0x13c <modBusPresetMultipleRegistersFC16>
+		}
+		if(ModBus.status==respostaRecebida)
+ 7ce:	80 91 2a 01 	lds	r24, 0x012A	; 0x80012a <ModBus>
+ 7d2:	83 30       	cpi	r24, 0x03	; 3
+ 7d4:	09 f0       	breq	.+2      	; 0x7d8 <main+0x15a>
+ 7d6:	42 c0       	rjmp	.+132    	; 0x85c <__DATA_REGION_LENGTH__+0x5c>
+		{			
+			if(ModBus.erro==semErro)
+ 7d8:	80 91 2b 01 	lds	r24, 0x012B	; 0x80012b <ModBus+0x1>
+ 7dc:	81 11       	cpse	r24, r1
+ 7de:	36 c0       	rjmp	.+108    	; 0x84c <__DATA_REGION_LENGTH__+0x4c>
+			{
+				// processa os dados lidos
+						if(bitData[24]==0) S5_L;
+ 7e0:	80 91 de 00 	lds	r24, 0x00DE	; 0x8000de <bitData+0x18>
+ 7e4:	81 11       	cpse	r24, r1
+ 7e6:	04 c0       	rjmp	.+8      	; 0x7f0 <main+0x172>
+ 7e8:	85 b3       	in	r24, 0x15	; 21
+ 7ea:	8f 7e       	andi	r24, 0xEF	; 239
+ 7ec:	85 bb       	out	0x15, r24	; 21
+ 7ee:	03 c0       	rjmp	.+6      	; 0x7f6 <main+0x178>
+						else S5_H;
+ 7f0:	85 b3       	in	r24, 0x15	; 21
+ 7f2:	80 61       	ori	r24, 0x10	; 16
+ 7f4:	85 bb       	out	0x15, r24	; 21
+						
+						if(bitData[25]==0) S6_L;
+ 7f6:	80 91 df 00 	lds	r24, 0x00DF	; 0x8000df <bitData+0x19>
+ 7fa:	81 11       	cpse	r24, r1
+ 7fc:	04 c0       	rjmp	.+8      	; 0x806 <__DATA_REGION_LENGTH__+0x6>
+ 7fe:	85 b3       	in	r24, 0x15	; 21
+ 800:	8f 7d       	andi	r24, 0xDF	; 223
+ 802:	85 bb       	out	0x15, r24	; 21
+ 804:	03 c0       	rjmp	.+6      	; 0x80c <__DATA_REGION_LENGTH__+0xc>
+						else S6_H;
+ 806:	85 b3       	in	r24, 0x15	; 21
+ 808:	80 62       	ori	r24, 0x20	; 32
+ 80a:	85 bb       	out	0x15, r24	; 21
+						
+						if(bitData[26]==0) S7_L;
+ 80c:	80 91 e0 00 	lds	r24, 0x00E0	; 0x8000e0 <bitData+0x1a>
+ 810:	81 11       	cpse	r24, r1
+ 812:	04 c0       	rjmp	.+8      	; 0x81c <__DATA_REGION_LENGTH__+0x1c>
+ 814:	85 b3       	in	r24, 0x15	; 21
+ 816:	8f 7b       	andi	r24, 0xBF	; 191
+ 818:	85 bb       	out	0x15, r24	; 21
+ 81a:	03 c0       	rjmp	.+6      	; 0x822 <__DATA_REGION_LENGTH__+0x22>
+						else S7_H;
+ 81c:	85 b3       	in	r24, 0x15	; 21
+ 81e:	80 64       	ori	r24, 0x40	; 64
+ 820:	85 bb       	out	0x15, r24	; 21
+						
+						if(bitData[27]==0) S8_L;
+ 822:	80 91 e1 00 	lds	r24, 0x00E1	; 0x8000e1 <bitData+0x1b>
+ 826:	81 11       	cpse	r24, r1
+ 828:	04 c0       	rjmp	.+8      	; 0x832 <__DATA_REGION_LENGTH__+0x32>
+ 82a:	85 b3       	in	r24, 0x15	; 21
+ 82c:	8f 77       	andi	r24, 0x7F	; 127
+ 82e:	85 bb       	out	0x15, r24	; 21
+ 830:	03 c0       	rjmp	.+6      	; 0x838 <__DATA_REGION_LENGTH__+0x38>
+						else S8_H;
+ 832:	85 b3       	in	r24, 0x15	; 21
+ 834:	80 68       	ori	r24, 0x80	; 128
+ 836:	85 bb       	out	0x15, r24	; 21
+						
+				S1_H;
+ 838:	85 b3       	in	r24, 0x15	; 21
+ 83a:	81 60       	ori	r24, 0x01	; 1
+ 83c:	85 bb       	out	0x15, r24	; 21
+				S2_L;
+ 83e:	85 b3       	in	r24, 0x15	; 21
+ 840:	8d 7f       	andi	r24, 0xFD	; 253
+ 842:	85 bb       	out	0x15, r24	; 21
+				S3_L;
+ 844:	85 b3       	in	r24, 0x15	; 21
+ 846:	8b 7f       	andi	r24, 0xFB	; 251
+ 848:	85 bb       	out	0x15, r24	; 21
+ 84a:	06 c0       	rjmp	.+12     	; 0x858 <__DATA_REGION_LENGTH__+0x58>
+			}
+			else
+			{
+				// trata o erro de leitura
+				S2_H;
+ 84c:	85 b3       	in	r24, 0x15	; 21
+ 84e:	82 60       	ori	r24, 0x02	; 2
+ 850:	85 bb       	out	0x15, r24	; 21
+				S1_L;
+ 852:	85 b3       	in	r24, 0x15	; 21
+ 854:	8e 7f       	andi	r24, 0xFE	; 254
+ 856:	85 bb       	out	0x15, r24	; 21
+			}
+			ModBusReset(); // prepara para a próxima transmissão
+ 858:	0e 94 97 00 	call	0x12e	; 0x12e <ModBusReset>
+		}
+		if(ModBus.status==semResposta)
+ 85c:	80 91 2a 01 	lds	r24, 0x012A	; 0x80012a <ModBus>
+ 860:	84 30       	cpi	r24, 0x04	; 4
+ 862:	09 f0       	breq	.+2      	; 0x866 <__stack+0x7>
+ 864:	15 cf       	rjmp	.-470    	; 0x690 <main+0x12>
+		{
+			S3_H;
+ 866:	85 b3       	in	r24, 0x15	; 21
+ 868:	84 60       	ori	r24, 0x04	; 4
+ 86a:	85 bb       	out	0x15, r24	; 21
+			S1_L;
+ 86c:	85 b3       	in	r24, 0x15	; 21
+ 86e:	8e 7f       	andi	r24, 0xFE	; 254
+ 870:	85 bb       	out	0x15, r24	; 21
+			// trata o erro sem Resposta ou resposta muito curta
+			// pode ser um código de erro...
+			ModBusReset(); // prepara para a próxima transmissão
+ 872:	0e 94 97 00 	call	0x12e	; 0x12e <ModBusReset>
+ 876:	0c cf       	rjmp	.-488    	; 0x690 <main+0x12>
+
+00000878 <_exit>:
+ 878:	f8 94       	cli
+
+0000087a <__stop_program>:
+ 87a:	ff cf       	rjmp	.-2      	; 0x87a <__stop_program>
